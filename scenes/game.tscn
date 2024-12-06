@@ -1,3 +1,22 @@
-[gd_scene format=3 uid="uid://buwas221px844"]
+[gd_scene load_steps=3 format=3 uid="uid://buwas221px844"]
 
-[node name="Game" type="Node3D"]
+[ext_resource type="PackedScene" uid="uid://cvdxieyuea61b" path="res://scenes/levels/city.tscn" id="1_qtgus"]
+[ext_resource type="PackedScene" uid="uid://cojmupujhmwwd" path="res://scenes/player.tscn" id="1_y0jgy"]
+
+[node name="Game" type="Node"]
+
+[node name="PlayerContainer" type="Node" parent="."]
+
+[node name="Player" parent="PlayerContainer" instance=ExtResource("1_y0jgy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+
+[node name="Camera3D" type="Camera3D" parent="PlayerContainer/Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 8)
+
+[node name="EnemyController" type="Node" parent="."]
+
+[node name="BonusContainer" type="Node" parent="."]
+
+[node name="World" type="Node" parent="."]
+
+[node name="City" parent="World" instance=ExtResource("1_qtgus")]

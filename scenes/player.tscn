@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://cojmupujhmwwd"]
+[gd_scene load_steps=2 format=3 uid="uid://cojmupujhmwwd"]
+
+[ext_resource type="Texture2D" uid="uid://ket0m2ljbf83" path="res://assets/sprites/sprite-sheet.png" id="1_h17p6"]
 
 [node name="Player" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = ExtResource("1_h17p6")
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 256)

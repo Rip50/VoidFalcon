@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://b6eo3w3pxxq0q"]
+[gd_scene load_steps=2 format=3 uid="uid://b6eo3w3pxxq0q"]
 
-[node name="Main" type="Node3D"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_1sktv"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_1sktv")
+
+[node name="GameContainer" type="Node" parent="."]
+
+[node name="UIContainer" type="CanvasLayer" parent="."]

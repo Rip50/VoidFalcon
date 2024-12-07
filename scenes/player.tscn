@@ -17,7 +17,7 @@ region_rect = Rect2(0, 0, 256, 256)
 [node name="MoveComponent" type="Node" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("2_yt8cn")
 actor = NodePath("..")
-velocity = Vector3(0, 0, -100)
+velocity = Vector3(0, 0, -150)
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 motion_mode = 1

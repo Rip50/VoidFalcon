@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://dx2004ytw2j60"]
+
+[ext_resource type="Script" path="res://scenes/prefabs/environment_object.gd" id="1_s0223"]
+[ext_resource type="Shader" path="res://assets/shaders/highlight_ribs.gdshader" id="2_aldb6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mpgei"]
+albedo_color = Color(0.145098, 0.141176, 0.27451, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4o757"]
+material = SubResource("StandardMaterial3D_mpgei")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g6yoy"]
+render_priority = 0
+shader = ExtResource("2_aldb6")
+shader_parameter/albedo = Color(0.145098, 0.141176, 0.27451, 1)
+shader_parameter/wire_color = Color(0.321569, 0.764706, 0.247059, 1)
+shader_parameter/wire_width = 2.0
+shader_parameter/wire_smoothness = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rnt5d"]
+
+[node name="Skyscraper" type="StaticBody3D"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+script = ExtResource("1_s0223")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_4o757")
+surface_material_override/0 = SubResource("ShaderMaterial_g6yoy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_rnt5d")

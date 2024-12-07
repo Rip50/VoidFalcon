@@ -8,7 +8,7 @@
 [node name="PlayerContainer" type="Node" parent="."]
 
 [node name="Player" parent="PlayerContainer" instance=ExtResource("1_y0jgy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, -10000)
 
 [node name="Camera3D" type="Camera3D" parent="PlayerContainer/Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 8)

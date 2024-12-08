@@ -1,3 +1,33 @@
-[gd_scene format=3 uid="uid://ciase43g58uue"]
+[gd_scene load_steps=6 format=3 uid="uid://ciase43g58uue"]
 
-[node name="KamikazeEnemy" type="Node3D"]
+[ext_resource type="Script" path="res://scenes/enemy.gd" id="1_27gqc"]
+[ext_resource type="Texture2D" uid="uid://ket0m2ljbf83" path="res://assets/sprites/sprite-sheet.png" id="1_h2fo3"]
+[ext_resource type="Script" path="res://components/move_component.gd" id="2_qmwp8"]
+[ext_resource type="Script" path="res://components/grow_effect_component.gd" id="4_onfob"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_la01a"]
+margin = 0.0
+radius = 3.0
+
+[node name="KamikazeEnemy" type="CharacterBody3D" groups=["enemies"]]
+collision_layer = 2
+script = ExtResource("1_27gqc")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.02
+billboard = 1
+texture_filter = 4
+texture = ExtResource("1_h2fo3")
+region_enabled = true
+region_rect = Rect2(256, 0, 256, 256)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_la01a")
+
+[node name="MoveComponent" type="Node" parent="." node_paths=PackedStringArray("actor")]
+script = ExtResource("2_qmwp8")
+actor = NodePath("..")
+velocity = Vector3(0, 0, -140)
+
+[node name="GrowEffectComponent" type="Node" parent="."]
+script = ExtResource("4_onfob")

@@ -5,7 +5,13 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rpvhs"]
 
-[node name="Player" type="Node3D"]
+[node name="Player" type="CharacterBody3D"]
+collision_mask = 6
+motion_mode = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("SphereShape3D_rpvhs")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 billboard = 1
@@ -18,10 +24,3 @@ region_rect = Rect2(0, 0, 256, 256)
 script = ExtResource("2_yt8cn")
 actor = NodePath("..")
 velocity = Vector3(0, 0, -150)
-
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-motion_mode = 1
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-shape = SubResource("SphereShape3D_rpvhs")

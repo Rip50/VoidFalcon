@@ -7,8 +7,10 @@ extends Node
 @export var spawn_range_x: Vector2 = Vector2(-50, 50)  # Диапазон случайного положения по X
 @export var spawn_interval: float = 1.5  # Интервал между спаунами
 @export var max_enemy_count: int = 5
+@export var dictionary: Array[String] = ["vivid", "cascade", "luminous", "whisker", "ponder", "azure", "orbit", "quaint", "flicker", "glimmer"]
 
 var spawn_timer: Timer
+var used_phrases_buffer: RingBuffer = RingBuffer.new(max_enemy_count)
 
 func _ready():
 	# Создаём и настраиваем таймер
@@ -25,6 +27,18 @@ func _on_spawn_timer_timeout():
 func _count_enemies() -> int:
 	return get_children().filter(func(node: Node): return node.is_in_group('enemies')).size()
 
+func _get_next_phrase() -> String:
+	var result: String = ''
+	while result == '':
+		var phrase = dictionary.pick_random()
+		# TODO: Потенциальный баг - бесконечный цикл
+		# Фраза уже присутствует в буфере или начинается с той же буквы, что одна из фраз в буфере
+		if used_phrases_buffer.contains(func(existing_phrase): return existing_phrase == phrase or (existing_phrase as String).begins_with(phrase[0])):
+			continue
+		result = phrase
+		
+	return result
+
 func spawn_enemy():
 	if not enemy_scene:
 		return
@@ -34,8 +48,11 @@ func spawn_enemy():
 
 	# Создаём врага
 	var enemy = enemy_scene.instantiate() as Enemy
+	var phrase = _get_next_phrase()
+	enemy.associated_phrase = phrase
 	add_child(enemy)
-
+	used_phrases_buffer.push(phrase)
+	
 	# Устанавливаем позицию спауна
 	var spawn_position = player.global_transform.origin
 	spawn_position.z -= spawn_distance  # Линия перед игроком

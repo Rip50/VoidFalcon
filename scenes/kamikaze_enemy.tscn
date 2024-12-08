@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ciase43g58uue"]
+[gd_scene load_steps=8 format=3 uid="uid://ciase43g58uue"]
 
 [ext_resource type="Script" path="res://scenes/enemy.gd" id="1_27gqc"]
 [ext_resource type="Texture2D" uid="uid://ket0m2ljbf83" path="res://assets/sprites/sprite-sheet.png" id="1_h2fo3"]
 [ext_resource type="Script" path="res://components/move_component.gd" id="2_qmwp8"]
 [ext_resource type="Script" path="res://components/grow_effect_component.gd" id="4_onfob"]
+[ext_resource type="Script" path="res://components/health_component.gd" id="5_rjlf0"]
+[ext_resource type="Script" path="res://components/phrase_component.gd" id="6_yete6"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_la01a"]
 margin = 0.0
@@ -31,3 +33,9 @@ velocity = Vector3(0, 0, -140)
 
 [node name="GrowEffectComponent" type="Node" parent="."]
 script = ExtResource("4_onfob")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("5_rjlf0")
+
+[node name="PhraseComponent" type="Node" parent="."]
+script = ExtResource("6_yete6")

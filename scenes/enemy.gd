@@ -7,12 +7,22 @@ var symbols_left: int:
 	get:
 		return phrase_componet.phrase.length() - phrase_componet.typed_count
 
+var next_letter: String:
+	get:
+		return phrase_componet.next_letter
+
 @onready var health_componet: HealthComponent = get_node('HealthComponent')
 @onready var phrase_componet: PhraseComponent = get_node('PhraseComponent')
 const DYNAMIC_LABEL = preload("res://scenes/dynamic_label.tscn") as PackedScene
 
 signal phrase_changed
 var label: DynamicLabel
+
+func _enter_tree() -> void:
+	EnemyTracker.add_enemy(self)
+
+func _exit_tree() -> void:
+	EnemyTracker.remove_enemy(self)
 
 func _ready() -> void:
 	health_componet.max_health = associated_phrase.length()
@@ -30,6 +40,7 @@ func _add_label(text: String):
 func take_damage():
 	health_componet.take_damage()
 	phrase_componet.type()
+	label.label.text = phrase_componet.phrase_left
 	emit_signal('phrase_changed')
 
 func _destroy():

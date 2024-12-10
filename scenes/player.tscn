@@ -1,14 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://cojmupujhmwwd"]
+[gd_scene load_steps=8 format=3 uid="uid://cojmupujhmwwd"]
 
 [ext_resource type="Texture2D" uid="uid://ket0m2ljbf83" path="res://assets/sprites/sprite-sheet.png" id="1_h17p6"]
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_ocu4u"]
 [ext_resource type="Script" path="res://components/move_component.gd" id="2_yt8cn"]
 [ext_resource type="Script" path="res://components/health_component.gd" id="3_kajrp"]
+[ext_resource type="Script" path="res://components/aim_and_fire_component.gd" id="5_ixps0"]
+[ext_resource type="Script" path="res://components/input_component.gd" id="6_vdc4e"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rpvhs"]
 
 [node name="Player" type="CharacterBody3D"]
 collision_mask = 6
 motion_mode = 1
+script = ExtResource("1_ocu4u")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -28,3 +32,11 @@ velocity = Vector3(0, 0, -150)
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("3_kajrp")
+
+[node name="AimAndFireComponent" type="Node" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("5_ixps0")
+player = NodePath("..")
+
+[node name="InputComponent" type="Node" parent="." node_paths=PackedStringArray("aim_and_fire_component")]
+script = ExtResource("6_vdc4e")
+aim_and_fire_component = NodePath("../AimAndFireComponent")

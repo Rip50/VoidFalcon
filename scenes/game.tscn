@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://buwas221px844"]
+[gd_scene load_steps=7 format=3 uid="uid://buwas221px844"]
 
 [ext_resource type="PackedScene" uid="uid://cvdxieyuea61b" path="res://scenes/levels/city.tscn" id="1_qtgus"]
 [ext_resource type="PackedScene" uid="uid://cojmupujhmwwd" path="res://scenes/player.tscn" id="1_y0jgy"]
 [ext_resource type="PackedScene" uid="uid://ce6twxaa8tfgm" path="res://scenes/cleaner.tscn" id="2_4lu8l"]
+[ext_resource type="Script" path="res://scripts/following_camera.gd" id="2_bp5hq"]
 [ext_resource type="Script" path="res://scripts/enemy_spawn_manager.gd" id="2_fw63u"]
 [ext_resource type="PackedScene" uid="uid://ciase43g58uue" path="res://scenes/kamikaze_enemy.tscn" id="3_3d3fi"]
 
@@ -16,9 +17,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 0)
 [node name="Camera3D" type="Camera3D" parent="PlayerContainer/Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 8)
 far = 2000.0
+script = ExtResource("2_bp5hq")
 
 [node name="Cleaner" parent="PlayerContainer/Player" instance=ExtResource("2_4lu8l")]
-transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 75)
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 61.1118)
 
 [node name="EnemyController" type="Node" parent="."]
 
@@ -28,7 +30,7 @@ player = NodePath("../../PlayerContainer/Player")
 enemy_scene = ExtResource("3_3d3fi")
 spawn_distance = 250.0
 spawn_range_x = Vector2(-10, 10)
-max_enemy_count = 3
+spawn_interval = 3.0
 
 [node name="BonusContainer" type="Node" parent="."]
 

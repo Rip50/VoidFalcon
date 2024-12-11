@@ -1,6 +1,7 @@
 class_name Enemy
 extends CharacterBody3D
 
+const EXPLOSION = preload("res://scenes/particles/explosion.tscn")
 @export var associated_phrase: String = ''
 
 var symbols_left: int:
@@ -44,5 +45,14 @@ func take_damage():
 	emit_signal('phrase_changed')
 
 func _destroy():
+	_explode()
 	health_componet.health_depleted.disconnect(_destroy)
 	queue_free()
+
+func _explode():
+	var explosion = EXPLOSION.instantiate()
+	explosion.emitting = true
+	explosion.one_shot = true
+	explosion.global_position = self.global_position
+	get_parent().add_child(explosion)
+	explosion.restart()

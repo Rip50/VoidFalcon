@@ -17,6 +17,7 @@ func try_shoot(letter: String):
 		return
 	
 	if target.next_letter == letter:
+		player.shoot()
 		target.take_damage()
 	
 	if target.next_letter == '':

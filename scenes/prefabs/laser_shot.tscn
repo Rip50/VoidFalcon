@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b64323c7irytx"]
+
+[ext_resource type="Script" path="res://scenes/prefabs/laser_shot.gd" id="1_dm6er"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_pbvhd"]
+
+[node name="LaserShot" type="Node3D"]
+script = ExtResource("1_dm6er")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 2000, -1, 0, -10)
+axis = 1
+texture = SubResource("CanvasTexture_pbvhd")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 2000, 1, 0, -10)
+axis = 1
+texture = SubResource("CanvasTexture_pbvhd")

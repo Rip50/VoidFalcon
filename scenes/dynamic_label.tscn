@@ -6,7 +6,7 @@
 viewport_path = NodePath("SubViewport")
 
 [node name="DynamicLabel" type="Sprite3D"]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_dt3ck")
 script = ExtResource("1_8gj6p")
@@ -14,7 +14,8 @@ script = ExtResource("1_8gj6p")
 [node name="SubViewport" type="SubViewport" parent="."]
 unique_name_in_owner = true
 transparent_bg = true
-size = Vector2i(500, 25)
+canvas_item_default_texture_filter = 0
+size = Vector2i(500, 50)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="SubViewport"]
 unique_name_in_owner = true
@@ -22,9 +23,9 @@ custom_minimum_size = Vector2(100, 0)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -27.5
-offset_right = 27.5
-offset_bottom = 23.0
+offset_left = -50.0
+offset_right = 150.0
+offset_bottom = 50.0
 grow_horizontal = 2
 text = "11123213123"
 scroll_active = false

@@ -1,11 +1,53 @@
-[gd_scene load_steps=7 format=3 uid="uid://buwas221px844"]
+[gd_scene load_steps=13 format=3 uid="uid://buwas221px844"]
 
 [ext_resource type="PackedScene" uid="uid://cvdxieyuea61b" path="res://scenes/levels/city.tscn" id="1_qtgus"]
 [ext_resource type="PackedScene" uid="uid://cojmupujhmwwd" path="res://scenes/player.tscn" id="1_y0jgy"]
 [ext_resource type="PackedScene" uid="uid://ce6twxaa8tfgm" path="res://scenes/cleaner.tscn" id="2_4lu8l"]
 [ext_resource type="Script" path="res://scripts/following_camera.gd" id="2_bp5hq"]
+[ext_resource type="Texture2D" uid="uid://b7kbd3bf003uy" path="res://assets/sprites/planets_background.png" id="2_ejfx3"]
 [ext_resource type="Script" path="res://scripts/enemy_spawn_manager.gd" id="2_fw63u"]
 [ext_resource type="PackedScene" uid="uid://ciase43g58uue" path="res://scenes/kamikaze_enemy.tscn" id="3_3d3fi"]
+[ext_resource type="Shader" path="res://assets/shaders/crt.gdshader" id="7_6ea4p"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_colas"]
+panorama = ExtResource("2_ejfx3")
+filter = false
+energy_multiplier = 0.6
+
+[sub_resource type="Sky" id="Sky_0kvcp"]
+sky_material = SubResource("PanoramaSkyMaterial_colas")
+
+[sub_resource type="Environment" id="Environment_aqr71"]
+background_mode = 2
+sky = SubResource("Sky_0kvcp")
+sky_custom_fov = 72.6
+sky_rotation = Vector3(0.42586, -2.92343, 1.76453)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+glow_enabled = true
+glow_levels/1 = 8.0
+glow_levels/3 = 0.0
+glow_levels/5 = 0.0
+glow_intensity = 0.5
+glow_strength = 0.15
+glow_bloom = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ylrku"]
+shader = ExtResource("7_6ea4p")
+shader_parameter/resolution = Vector2(1280, 1024)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 0.1
+shader_parameter/noise_amount = 0.03
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.1
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.6
+shader_parameter/vignette_intensity = 0.6
+shader_parameter/aberation_amount = 0.5
+shader_parameter/roll_line_amount = 0.0
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -12.0
+shader_parameter/pixel_strength = -4.0
 
 [node name="Game" type="Node"]
 
@@ -16,6 +58,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 0)
 
 [node name="Camera3D" type="Camera3D" parent="PlayerContainer/Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 8)
+environment = SubResource("Environment_aqr71")
 far = 2000.0
 script = ExtResource("2_bp5hq")
 
@@ -37,3 +80,14 @@ spawn_interval = 3.0
 [node name="World" type="Node" parent="."]
 
 [node name="City" parent="World" instance=ExtResource("1_qtgus")]
+
+[node name="ScreenFilter" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="ScreenFilter"]
+visible = false
+material = SubResource("ShaderMaterial_ylrku")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

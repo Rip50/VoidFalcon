@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://dlpuu2d23jxjy"]
+
+[ext_resource type="Script" path="res://scenes/particles/auto_delete_particle.gd" id="1_c0i2h"]
+
+[sub_resource type="Curve" id="Curve_ustm8"]
+_data = [Vector2(0.00843437, 0.588215), 0.0, 0.0, 0, 0, Vector2(0.0690564, 1), 0.0, 0.0, 0, 0, Vector2(0.324723, 1), 0.0, 0.0, 0, 0, Vector2(0.498682, 1), 0.0, 0.0, 0, 0, Vector2(0.98893, 0.0356357), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_ne3bs"]
+curve = SubResource("Curve_ustm8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ha2gu"]
+lifetime_randomness = 0.5
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+direction = Vector3(1, 0, 1)
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+gravity = Vector3(0, -15, 0)
+scale_min = 0.5
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_ne3bs")
+scale_over_velocity_min = 1.0
+scale_over_velocity_max = 5.0
+turbulence_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16jf7"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_53qim"]
+material = SubResource("StandardMaterial3D_16jf7")
+radius = 1.0
+height = 2.0
+
+[node name="Explosion" type="GPUParticles3D"]
+cast_shadow = 0
+gi_mode = 0
+amount = 20
+lifetime = 1.5
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ha2gu")
+draw_pass_1 = SubResource("SphereMesh_53qim")
+script = ExtResource("1_c0i2h")

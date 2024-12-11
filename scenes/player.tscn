@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cojmupujhmwwd"]
+[gd_scene load_steps=9 format=3 uid="uid://cojmupujhmwwd"]
 
 [ext_resource type="Texture2D" uid="uid://ket0m2ljbf83" path="res://assets/sprites/sprite-sheet.png" id="1_h17p6"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_ocu4u"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://components/health_component.gd" id="3_kajrp"]
 [ext_resource type="Script" path="res://components/aim_and_fire_component.gd" id="5_ixps0"]
 [ext_resource type="Script" path="res://components/input_component.gd" id="6_vdc4e"]
+[ext_resource type="Script" path="res://components/steering_component.gd" id="7_xejix"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rpvhs"]
 
@@ -40,3 +41,7 @@ player = NodePath("..")
 [node name="InputComponent" type="Node" parent="." node_paths=PackedStringArray("aim_and_fire_component")]
 script = ExtResource("6_vdc4e")
 aim_and_fire_component = NodePath("../AimAndFireComponent")
+
+[node name="SteeringComponent" type="Node" parent="." node_paths=PackedStringArray("actor")]
+script = ExtResource("7_xejix")
+actor = NodePath("..")

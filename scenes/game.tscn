@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cvdxieyuea61b" path="res://scenes/levels/city.tscn" id="1_qtgus"]
 [ext_resource type="PackedScene" uid="uid://cojmupujhmwwd" path="res://scenes/player.tscn" id="1_y0jgy"]
 [ext_resource type="PackedScene" uid="uid://ce6twxaa8tfgm" path="res://scenes/cleaner.tscn" id="2_4lu8l"]
-[ext_resource type="Script" path="res://scripts/following_camera.gd" id="2_bp5hq"]
+[ext_resource type="Script" path="res://scripts/shaking_camera.gd" id="2_bp5hq"]
 [ext_resource type="Texture2D" uid="uid://b7kbd3bf003uy" path="res://assets/sprites/planets_background.png" id="2_ejfx3"]
 [ext_resource type="Script" path="res://scripts/enemy_spawn_manager.gd" id="2_fw63u"]
 [ext_resource type="PackedScene" uid="uid://ciase43g58uue" path="res://scenes/kamikaze_enemy.tscn" id="3_3d3fi"]

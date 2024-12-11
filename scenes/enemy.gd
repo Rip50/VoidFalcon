@@ -17,6 +17,7 @@ var next_letter: String:
 const DYNAMIC_LABEL = preload("res://scenes/dynamic_label.tscn") as PackedScene
 
 signal phrase_changed
+
 var label: DynamicLabel
 
 func _enter_tree() -> void:
@@ -45,14 +46,14 @@ func take_damage():
 	emit_signal('phrase_changed')
 
 func _destroy():
-	_explode()
 	health_componet.health_depleted.disconnect(_destroy)
+	_explode()
+	SignalBus.emit_enemy_destroyed(self.position)
 	queue_free()
 
 func _explode():
 	var explosion = EXPLOSION.instantiate()
 	explosion.emitting = true
 	explosion.one_shot = true
-	explosion.global_position = self.global_position
 	get_parent().add_child(explosion)
-	explosion.restart()
+	explosion.global_position = self.global_position

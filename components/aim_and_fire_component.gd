@@ -28,6 +28,6 @@ func try_aim(letter: String) -> Enemy:
 	if enemy == null:
 		return null
 	
-	player.position.x = enemy.position.x
+	player.steer(enemy)
 	
 	return enemy

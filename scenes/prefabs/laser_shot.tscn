@@ -1,18 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://b64323c7irytx"]
+[gd_scene load_steps=4 format=3 uid="uid://b64323c7irytx"]
 
 [ext_resource type="Script" path="res://scenes/prefabs/laser_shot.gd" id="1_dm6er"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_pbvhd"]
+[ext_resource type="PackedScene" uid="uid://xxtrcw3uwvx6" path="res://scenes/particles/laser.tscn" id="2_2gdra"]
+[ext_resource type="Script" path="res://scenes/particles/auto_delete_particle.gd" id="3_sgyer"]
 
 [node name="LaserShot" type="Node3D"]
 script = ExtResource("1_dm6er")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 2000, -1, 0, -10)
-axis = 1
-texture = SubResource("CanvasTexture_pbvhd")
+[node name="Laser" parent="." instance=ExtResource("2_2gdra")]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 1, 0, 0)
+script = ExtResource("3_sgyer")
 
-[node name="Sprite3D2" type="Sprite3D" parent="."]
-transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 2000, 1, 0, -10)
-axis = 1
-texture = SubResource("CanvasTexture_pbvhd")
+[node name="Laser2" parent="." instance=ExtResource("2_2gdra")]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, -1, 0, 0)
+script = ExtResource("3_sgyer")

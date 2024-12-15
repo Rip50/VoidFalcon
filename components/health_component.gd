@@ -9,6 +9,9 @@ var current_health: int:
 		if current_health <= 0:
 			emit_signal('health_depleted')
 
+func _ready():
+	current_health = max_health
+
 signal health_depleted
 
 func take_damage():

@@ -13,7 +13,7 @@ func _physics_process(delta: float) -> void:
 		actor.rotation = Vector3.ZERO
 		return
 		
-	if abs(target.position.x - actor.position.x) <= 1:
+	if abs(target.position.x - actor.position.x) <= 0.3:
 		target = null
 		return
 		

@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://xxtrcw3uwvx6"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l1sgm"]
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 1200.0
+initial_velocity_max = 1200.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = -2.23517e-06
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f0a0b"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 20.0
+ao_enabled = true
+ao_light_affect = 1.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_x8j6h"]
+material = SubResource("StandardMaterial3D_f0a0b")
+radius = 0.05
+height = 8.0
+
+[node name="Laser" type="GPUParticles3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+cast_shadow = 0
+emitting = false
+amount = 1
+one_shot = true
+trail_lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_l1sgm")
+draw_pass_1 = SubResource("CapsuleMesh_x8j6h")

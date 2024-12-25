@@ -10,7 +10,7 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5qmp2"]
 
-[node name="KamikazeEnemy" type="CharacterBody3D" groups=["enemies"]]
+[node name="KamikazeEnemy" type="Area3D" groups=["enemies"]]
 collision_layer = 2
 script = ExtResource("1_27gqc")
 
@@ -31,8 +31,9 @@ script = ExtResource("2_qmwp8")
 actor = NodePath("..")
 velocity = Vector3(0, 0, -135)
 
-[node name="GrowEffectComponent" type="Node" parent="."]
+[node name="GrowEffectComponent" type="Node" parent="." node_paths=PackedStringArray("target_object")]
 script = ExtResource("4_onfob")
+target_object = NodePath("..")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("5_rjlf0")
@@ -43,11 +44,4 @@ script = ExtResource("6_yete6")
 [node name="CrashComponent" type="Node" parent="." node_paths=PackedStringArray("actor", "actor_crash_area")]
 script = ExtResource("7_noxrh")
 actor = NodePath("..")
-actor_crash_area = NodePath("../CollisionArea")
-
-[node name="CollisionArea" type="Area3D" parent="." groups=["enemies"]]
-collision_layer = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionArea"]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
-shape = SubResource("SphereShape3D_5qmp2")
+actor_crash_area = NodePath("..")

@@ -12,5 +12,3 @@ script = ExtResource("1_tcw4a")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_8kned")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]

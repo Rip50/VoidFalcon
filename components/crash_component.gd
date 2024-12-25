@@ -5,8 +5,8 @@ extends Node
 @export var actor_crash_area : Area3D
 
 func _ready() -> void:
-	actor_crash_area.body_entered.connect(_on_body_crashed)
+	actor_crash_area.area_entered.connect(_on_area_crashed)
 
-func _on_body_crashed(body : Node3D):
+func _on_area_crashed(area : Area3D):
 	if actor.has_method('crash_with'):
-		actor.crash_with(body)
+		actor.crash_with(area)

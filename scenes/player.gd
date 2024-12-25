@@ -1,5 +1,5 @@
 class_name Player
-extends CharacterBody3D
+extends Area3D
 
 const LASER_SHOT = preload("res://scenes/prefabs/laser_shot.tscn")
 @onready var steering_component: SteeringComponent = $SteeringComponent

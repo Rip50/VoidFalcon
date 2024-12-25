@@ -1,7 +1,7 @@
 class_name EnemySpawnManager
 extends Node
 
-@export var player: CharacterBody3D
+@export var player: Player
 @export var enemy_scene: PackedScene  # Сцена врага
 @export var spawn_distance: float = 500.0  # Расстояние линии спауна перед игроком
 @export var spawn_range_x: Vector2 = Vector2(-50, 50)  # Диапазон случайного положения по X

@@ -1,5 +1,5 @@
 class_name Enemy
-extends CharacterBody3D
+extends Area3D
 
 const EXPLOSION = preload("res://scenes/particles/explosion.tscn")
 @export var associated_phrase: String = ''

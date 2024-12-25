@@ -4,6 +4,10 @@ extends Area3D
 const LASER_SHOT = preload("res://scenes/prefabs/laser_shot.tscn")
 @onready var steering_component: SteeringComponent = $SteeringComponent
 @onready var health_component: HealthComponent = $HealthComponent
+@onready var move_component: MoveComponent = $MoveComponent
+
+func _ready() -> void:
+	health_component.health_depleted.connect(_destroy_player)
 
 func shoot():
 	var laser = LASER_SHOT.instantiate()
@@ -15,3 +19,7 @@ func steer(target: Node3D):
 func crash_with(body: Node3D):
 	if not body.is_in_group('environment'):
 		health_component.take_damage()
+
+func _destroy_player():
+	move_component.stop()
+	SignalBus.emit_player_destroyed()

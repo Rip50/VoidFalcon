@@ -6,6 +6,7 @@ extends Node
 var current_health: int:
 	set(value): 
 		current_health = clampi(value, 0, max_health)
+		print_debug('Current health:' + str(current_health))
 		if current_health <= 0:
 			emit_signal('health_depleted')
 

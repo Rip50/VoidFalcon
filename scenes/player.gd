@@ -8,6 +8,8 @@ const LASER_SHOT = preload("res://scenes/prefabs/laser_shot.tscn")
 
 func _ready() -> void:
 	health_component.health_depleted.connect(_destroy_player)
+	health_component.health_changed.connect(SignalBus.emit_player_health_changed)
+	SignalBus.emit_player_health_changed(health_component.current_health)
 
 func shoot():
 	var laser = LASER_SHOT.instantiate()

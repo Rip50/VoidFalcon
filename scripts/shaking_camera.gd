@@ -7,9 +7,10 @@ var shake_timer: float = 0.0  # Tracks remaining shake time
 @onready var original_offset: Vector3 = self.position  # Store the original camera offset
 
 func _ready() -> void:
-	SignalBus.enemy_destroyed.connect(_shake_on_enemy_destroyed)
+	# TODO: replace shaking on enemy destroyed with shaking on explosion
+	SignalBus.enemy_destroyed.connect(_shake_on_explosion)
 
-func _shake_on_enemy_destroyed(position: Vector3):
+func _shake_on_explosion(position: Vector3):
 	# TODO: use distance to enemy for dynamic intensity 
 	shake(0.2, 0.5)
 

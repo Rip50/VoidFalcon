@@ -57,3 +57,6 @@ func _explode():
 	explosion.one_shot = true
 	get_parent().add_child(explosion)
 	explosion.global_position = self.global_position
+
+func crash_with(body: Node3D):
+	_destroy()

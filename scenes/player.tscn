@@ -12,8 +12,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_wwfgs"]
 
 [node name="Player" type="CharacterBody3D"]
-collision_layer = 0
-collision_mask = 0
+collision_mask = 6
 motion_mode = 1
 script = ExtResource("1_ocu4u")
 
@@ -45,10 +44,10 @@ aim_and_fire_component = NodePath("../AimAndFireComponent")
 script = ExtResource("7_xejix")
 actor = NodePath("..")
 
-[node name="CrashComponent" type="Node" parent="." node_paths=PackedStringArray("actor", "acror_crush_area")]
+[node name="CrashComponent" type="Node" parent="." node_paths=PackedStringArray("actor", "actor_crash_area")]
 script = ExtResource("8_8nokx")
 actor = NodePath("..")
-acror_crush_area = NodePath("../CollisionArea")
+actor_crash_area = NodePath("../CollisionArea")
 
 [node name="CollisionArea" type="Area3D" parent="."]
 collision_mask = 6

@@ -7,7 +7,19 @@ extends Node
 @export var spawn_range_x: Vector2 = Vector2(-50, 50)  # Диапазон случайного положения по X
 @export var spawn_interval: float = 1.5  # Интервал между спаунами
 @export var max_enemy_count: int = 5
-@export var dictionary: Array[String] = ["vivid", "cascade", "luminous", "whisker", "ponder", "azure", "orbit", "quaint", "flicker", "glimmer"]
+
+@export var dictionary: Array[String] = [
+	"vivid", "cascade", "luminous", "whisker", "ponder", "azure", "orbit", "quaint", "flicker", "glimmer",
+	"ripple", "ember", "sizzle", "breeze", "crystal", "harmony", "whisper", "zephyr", "quasar", "prism",
+	"galaxy", "serene", "voyage", "meadow", "eclipse", "spectrum", "nebula", "stellar", "mirage", "twilight",
+	"velvet", "cinder", "solace", "radiant", "chimera", "aether", "thistle", "sparkle", "blossom", "lattice",
+	"amber", "mystic", "pebble", "flourish", "silken", "verdant", "dusk", "petal", "wisp", "glacier",
+	"haven", "tranquil", "bramble", "tapestry", "frost", "aurora", "zenith", "parchment", "crescent", "horizon",
+	"labyrinth", "quiver", "serenade", "ember", "willow", "glisten", "meander", "realm", "spire", "murmur",
+	"plume", "spire", "harbor", "elegant", "grotto", "whimsy", "ascent", "canopy", "brook", "solitude",
+	"rift", "fern", "opal", "sapphire", "blizzard", "ebony", "fable", "moondust", "celestial", "pinnacle",
+	"serenity", "gossamer", "silhouette", "embers", "dewdrop", "verve", "luminary", "petal", "wistful", "quaint"
+]
 
 var spawn_timer: Timer
 var used_phrases_buffer: RingBuffer = RingBuffer.new(max_enemy_count)

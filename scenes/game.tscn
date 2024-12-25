@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://buwas221px844"]
+[gd_scene load_steps=14 format=3 uid="uid://buwas221px844"]
 
 [ext_resource type="PackedScene" uid="uid://cvdxieyuea61b" path="res://scenes/levels/city.tscn" id="1_qtgus"]
+[ext_resource type="Script" path="res://scripts/difficulty_controller.gd" id="1_xl8wp"]
 [ext_resource type="PackedScene" uid="uid://cojmupujhmwwd" path="res://scenes/player.tscn" id="1_y0jgy"]
 [ext_resource type="PackedScene" uid="uid://ce6twxaa8tfgm" path="res://scenes/cleaner.tscn" id="2_4lu8l"]
 [ext_resource type="Script" path="res://scripts/shaking_camera.gd" id="2_bp5hq"]
@@ -50,6 +51,11 @@ shader_parameter/scan_line_strength = -12.0
 shader_parameter/pixel_strength = -4.0
 
 [node name="Game" type="Node"]
+
+[node name="DifficultyController" type="Node" parent="." node_paths=PackedStringArray("player", "enemy_spawn_manager")]
+script = ExtResource("1_xl8wp")
+player = NodePath("../PlayerContainer/Player")
+enemy_spawn_manager = NodePath("../EnemyController/EnemySpawnManager")
 
 [node name="PlayerContainer" type="Node" parent="."]
 

@@ -6,6 +6,12 @@ const LASER_SHOT = preload("res://scenes/prefabs/laser_shot.tscn")
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var move_component: MoveComponent = $MoveComponent
 
+@export var velocity: float:
+	get:
+		return move_component.velocity.z
+	set(value):
+		move_component.velocity.z = value
+
 func _ready() -> void:
 	health_component.health_depleted.connect(_destroy_player)
 	health_component.health_changed.connect(SignalBus.emit_player_health_changed)

@@ -45,3 +45,6 @@ script = ExtResource("6_yete6")
 script = ExtResource("7_noxrh")
 actor = NodePath("..")
 actor_crash_area = NodePath("..")
+
+[node name="GPUParticlesCollisionSphere3D" type="GPUParticlesCollisionSphere3D" parent="."]
+radius = 2.0

@@ -1,9 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://buwas221px844"]
+[gd_scene load_steps=13 format=3 uid="uid://buwas221px844"]
 
 [ext_resource type="PackedScene" uid="uid://cvdxieyuea61b" path="res://scenes/levels/city.tscn" id="1_qtgus"]
 [ext_resource type="Script" path="res://scripts/difficulty_controller.gd" id="1_xl8wp"]
 [ext_resource type="PackedScene" uid="uid://cojmupujhmwwd" path="res://scenes/player.tscn" id="1_y0jgy"]
-[ext_resource type="PackedScene" uid="uid://ce6twxaa8tfgm" path="res://scenes/cleaner.tscn" id="2_4lu8l"]
 [ext_resource type="Script" path="res://scripts/shaking_camera.gd" id="2_bp5hq"]
 [ext_resource type="Texture2D" uid="uid://b7kbd3bf003uy" path="res://assets/sprites/planets_background.png" id="2_ejfx3"]
 [ext_resource type="Script" path="res://scripts/enemy_spawn_manager.gd" id="2_fw63u"]
@@ -32,6 +31,17 @@ glow_levels/5 = 0.0
 glow_intensity = 0.5
 glow_strength = 0.15
 glow_bloom = 0.5
+fog_enabled = true
+fog_light_color = Color(0.0462, 0.028, 0.07, 1)
+fog_light_energy = 0.5
+fog_density = 0.005
+fog_sky_affect = 0.0
+fog_height = 5.0
+fog_height_density = 0.25
+fog_depth_curve = 0.482971
+fog_depth_begin = 0.0
+fog_depth_end = 400.0
+adjustment_enabled = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ylrku"]
 shader = ExtResource("7_6ea4p")
@@ -65,11 +75,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 0)
 [node name="Camera3D" type="Camera3D" parent="PlayerContainer/Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 8)
 environment = SubResource("Environment_aqr71")
-far = 2000.0
+far = 3000.0
 script = ExtResource("2_bp5hq")
-
-[node name="Cleaner" parent="PlayerContainer/Player" instance=ExtResource("2_4lu8l")]
-transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 61.1118)
 
 [node name="EnemyController" type="Node" parent="."]
 

@@ -14,6 +14,7 @@ var next_letter: String:
 
 @onready var health_componet: HealthComponent = get_node('HealthComponent')
 @onready var phrase_componet: PhraseComponent = get_node('PhraseComponent')
+
 const DYNAMIC_LABEL = preload("res://scenes/dynamic_label.tscn") as PackedScene
 
 signal phrase_changed
@@ -22,6 +23,9 @@ var label: DynamicLabel
 
 func _enter_tree() -> void:
 	EnemyTracker.add_enemy(self)
+	var visibility_notifier = VisibleOnScreenNotifier3D.new()
+	add_child(visibility_notifier)
+	visibility_notifier.screen_exited.connect(queue_free)
 
 func _exit_tree() -> void:
 	EnemyTracker.remove_enemy(self)

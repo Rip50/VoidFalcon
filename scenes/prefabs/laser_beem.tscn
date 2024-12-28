@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdyrhji5hpxko"]
+
+[ext_resource type="Script" path="res://scenes/prefabs/laser_beem.gd" id="1_357bs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ku63j"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 5.0
+rim_tint = 1.0
+clearcoat_roughness = 0.79
+anisotropy = -1.0
+ao_enabled = true
+ao_light_affect = 0.2
+texture_filter = 0
+disable_receive_shadows = true
+grow = true
+proximity_fade_distance = 500.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_6x75x"]
+material = SubResource("StandardMaterial3D_ku63j")
+radius = 0.07
+height = 10.0
+radial_segments = 8
+rings = 4
+
+[node name="LaserBeem" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_357bs")
+speed = Vector3(0, 0, -700)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_6x75x")
+
+[node name="RayCast3D" type="RayCast3D" parent="MeshInstance3D"]
+unique_name_in_owner = true
+target_position = Vector3(0, 50, 0)
+collision_mask = 6
+hit_back_faces = false
+collide_with_areas = true
+collide_with_bodies = false
